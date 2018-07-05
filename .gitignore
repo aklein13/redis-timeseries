@@ -2,3 +2,5 @@
 *.so
 .vscode/
 __pycache__
+.idea/
+.DS_STORE

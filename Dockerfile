@@ -14,4 +14,9 @@ RUN cd redis-tsdb/src && make clean && make
 
 EXPOSE 6379
 
-CMD ["/usr/local/bin/redis-server", "--bind", "0.0.0.0","--loadmodule", "/redis-tsdb/src/redis-tsdb-module.so"]
+# -v redis_data:/data
+VOLUME ["/data"]
+
+WORKDIR /data
+
+CMD ["/usr/local/bin/redis-server", "--appendonly", "yes", "--bind", "0.0.0.0","--loadmodule", "/redis-tsdb/src/redis-tsdb-module.so"]
